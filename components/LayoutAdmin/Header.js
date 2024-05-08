@@ -70,6 +70,9 @@ const Header = () => {
               Votos
             </a>
           </ul>
+          <div className="col-start-10 col-end-12 font-medium flex justify-end items-center cursor-pointer">
+            <a href="/logout">Sair</a>
+          </div>
         </nav>
       </header>
       {/* Mobile Navigation */}
