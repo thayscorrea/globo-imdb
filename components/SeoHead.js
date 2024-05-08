@@ -88,7 +88,7 @@ const SeoHead = (props) => {
       <meta name='msapplication-TileColor' content='#F53838' />
       <meta
         name='msapplication-TileImage'
-        content='/favicon/ms-icon-144x144.png'
+        content=''
       />
       {/* Accent color on supported browser */}
       <meta name='theme-color' content='#F53838' />

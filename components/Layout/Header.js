@@ -15,7 +15,7 @@ const Header = () => {
           <ul className="hidden lg:flex col-start-2 col-end-8 text-black-500 gap-x-6 items-center">
 
             <div className="w-1/3">
-              <select id="underline_select" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+              <select id="underline_select" className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 <option selected>Filtrar por</option>
                 <option value="Diretor">Diretor</option>
                 <option value="Filme">Filme</option>
@@ -24,15 +24,15 @@ const Header = () => {
               </select>
             </div>
 
-            <div class="flex items-center  w-full gap-2">
-              <div class="relative w-full">
-                <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full ps-10 p-2.5" placeholder="Pesquisar" required />
+            <div className="flex items-center  w-full gap-2">
+              <div className="relative w-full">
+                <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full ps-10 p-2.5" placeholder="Pesquisar" required />
               </div>
-              <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-yellow-500 rounded-lg border border-yellow-500 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-500">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <button type="submit" className="p-2.5 ms-2 text-sm font-medium text-white bg-yellow-500 rounded-lg border border-yellow-500 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-500">
+                <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                 </svg>
-                <span class="sr-only">Pesquisar</span>
+                <span className="sr-only">Pesquisar</span>
               </button>
             </div>
           </ul>

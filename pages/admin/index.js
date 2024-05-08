@@ -1,17 +1,13 @@
-import CallToAction from "../components/CallToAction";
-import CarouselBlock from "../components/CarouselBlock";
-import Layout from "../components/Layout/Layout";
-import SeoHead from "../components/SeoHead";
+import Layout from "../../components/LayoutAdmin/Layout";
+import SeoHead from "../../components/SeoHead";
 
 const Home = ({ items }) => {
   return (
-    <>
+    <div className="body-layout-admin">
       <SeoHead title='Home' />
       <Layout>
-        <CarouselBlock items={items} />
-        <CallToAction />
       </Layout>
-    </>
+    </div>
   );
 }
 
