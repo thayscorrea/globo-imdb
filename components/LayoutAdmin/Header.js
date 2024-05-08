@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link as LinkScroll } from "react-scroll";
 
 import Logo from "../../public/favicon/icon.svg"
 
@@ -25,12 +24,9 @@ const Header = () => {
             <Logo className="h-8 w-auto" />
           </div>
           <ul className="hidden lg:flex col-start-2 col-end-8 text-black-500  items-right">
-            <LinkScroll
+            <a
+              href='/admin/users'
               activeClass="active"
-              to="users"
-              spy={true}
-              smooth={true}
-              time={1000}
               onSetActive={() => {
                 setActiveLink("users");
               }}
@@ -42,13 +38,10 @@ const Header = () => {
               }
             >
               Usuários
-            </LinkScroll>
-            <LinkScroll
+            </a>
+            <a
               activeClass="active"
-              to="movies"
-              spy={true}
-              smooth={true}
-              time={1000}
+              href='/admin/movies'
               onSetActive={() => {
                 setActiveLink("movies");
               }}
@@ -60,13 +53,10 @@ const Header = () => {
               }
             >
               Filmes
-            </LinkScroll>
-            <LinkScroll
+            </a>
+            <a
               activeClass="active"
-              to="votes"
-              spy={true}
-              smooth={true}
-              time={1000}
+              href='/admin/votes'
               onSetActive={() => {
                 setActiveLink("votes");
               }}
@@ -78,7 +68,7 @@ const Header = () => {
               }
             >
               Votos
-            </LinkScroll>
+            </a>
           </ul>
         </nav>
       </header>
@@ -87,13 +77,9 @@ const Header = () => {
       <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
         <div className="bg-white-500 sm:px-3">
           <ul className="flex w-full justify-between items-center text-black-500">
-            <LinkScroll
+            <a
               activeClass="active"
-              to="users"
-              href="/users"
-              spy={true}
-              smooth={true}
-              time={1000}
+              href="/admin/users"
               onSetActive={() => {
                 setActiveLink("users");
               }}
@@ -119,13 +105,10 @@ const Header = () => {
                 />
               </svg>
               Usuários
-            </LinkScroll>
-            <LinkScroll
+            </a>
+            <a
               activeClass="active"
-              to="movies"
-              spy={true}
-              smooth={true}
-              time={1000}
+              href="/admin/movies"
               onSetActive={() => {
                 setActiveLink("movies");
               }}
@@ -151,13 +134,10 @@ const Header = () => {
                 />
               </svg>
               Filmes
-            </LinkScroll>
-            <LinkScroll
+            </a>
+            <a
               activeClass="active"
-              to="votes"
-              spy={true}
-              smooth={true}
-              time={1000}
+              href="/admin/votes"
               onSetActive={() => {
                 setActiveLink("votes");
               }}
@@ -183,7 +163,7 @@ const Header = () => {
                 />
               </svg>
               Votos
-            </LinkScroll>
+            </a>
           </ul>
         </div>
       </nav>
