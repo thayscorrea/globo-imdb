@@ -25,7 +25,7 @@ const Header = () => {
           </div>
           <ul className="hidden lg:flex col-start-2 col-end-8 text-black-500  items-right">
             <a
-              href='/admin/users'
+              href='/admin/'
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "users"
@@ -69,7 +69,7 @@ const Header = () => {
         <div className="bg-white-500 sm:px-3">
           <ul className="flex w-full justify-between items-center text-black-500">
             <a
-              href="/admin/users"
+              href="/admin/"
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                 (activeLink === "users"

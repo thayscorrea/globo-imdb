@@ -24,7 +24,7 @@ const TableMovies = ({ items }) => {
                 </tr>
             </thead>
             <tbody>
-                {items.map(({ name, year, time, sinopse }, index) => (
+                {items.map(({ name, year, time, sinopse, evaluation }, index) => (
                     <tr className="bg-white border-b" key={index}>
                         <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
                             <div className="ps-3">
@@ -41,7 +41,7 @@ const TableMovies = ({ items }) => {
                             {sinopse}
                         </td>
                         <td className="px-6 py-4">
-                            
+                            {evaluation}
                         </td>
                         <td className="px-6 py-4">
                             <a href="#" className="font-medium text-blue-600 hover:underline">Editar</a>

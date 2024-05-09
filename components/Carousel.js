@@ -48,7 +48,7 @@ const Carousel = ({ items }) => {
         ref={setSliderRef}
         className="flex items-stretch justify-items-stretch"
       >
-        {items.map(({ movieID, name, year, time, sinopse, image }, index) => (
+        {items.map(({ movieID, name, year, time, sinopse, image, evaluation }, index) => (
           <div className="px-3 flex items-stretch cursor-pointer" id={`movie-`+movieID} key={index}>
             <div className="border-2 border-white-500 hover:border-yellow-500 transition-all rounded-lg p-8 flex flex-col">
               <div className="flex flex-col xl:flex-row w-full items-stretch xl:items-center">
@@ -69,7 +69,7 @@ const Carousel = ({ items }) => {
                   </div>
                 </div>
                 <div className="flex flex-none items-center ml-auto order-1 xl:order-2">
-                  <p className="text-sm text-white-500">{1}</p>
+                  <p className="text-sm text-white-500">{evaluation}</p>
                   <span className="flex ml-4">
                     <Stars className="h-4 w-4" />
                   </span>
