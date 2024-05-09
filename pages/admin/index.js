@@ -7,7 +7,63 @@ import SeoHead from "../../components/SeoHead";
 import TableUsers from "../../components/Tables/Users";
 
 const Users = ({ items }) => {
+  const [originalData, setOriginalData] = useState(items);
+  const [data, setData] = useState(items);
   const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState(null)
+
+  const onClickRegister = () => {
+    setShowModal(true)
+    setUser(null)
+  }
+
+  const handleInput = (e) => {
+    const inputValue = e.target.value;
+    setData(searchTable(inputValue));
+  }
+
+  const handleFilter = (e) => {
+    const inputValue = e.target.value;
+    setData(filterStatus(inputValue));
+  }
+
+  function searchTable(value) {
+    const filteredData = [];
+
+    if (value.length === 0) {
+      return originalData;
+    }
+
+    for (let i = 0; i < originalData.length; ++i) {
+      const newValue = value.toLowerCase();
+      const nameUser = originalData[i].name.toLowerCase();
+      const emailUser = originalData[i].email.toLowerCase();
+
+      if (nameUser.includes(newValue) || emailUser.includes(newValue)) {
+        filteredData.push(originalData[i]);
+      }
+    }
+    return filteredData;
+  }
+
+  function filterStatus(value) {
+    const inputValue = parseInt(value);
+    const filteredData = [];
+
+    if (inputValue.length === 0 || inputValue == -1) {
+      return originalData;
+    }
+
+    for (let i = 0; i < originalData.length; ++i) {
+      const status = originalData[i].delete_at == null ? 1 : 0;
+      
+      if (status == inputValue){
+        filteredData.push(originalData[i]);
+      }
+    }
+
+    return filteredData;
+  }
 
   return (
     <>
@@ -19,33 +75,21 @@ const Users = ({ items }) => {
               <div className="relative overflow-x-auto">
                 <div className="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white">
                   <div>
-                    <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" className="inline-flex items-center text-black-700 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
-                      Filtrar por
-                      <svg className="w-2.5 h-2.5 ms-2.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-                      </svg>
-                    </button>
-
-                    <div id="dropdownAction" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                      <ul className="py-1 text-sm text-gray-700" aria-labelledby="dropdownActionButton">
-                        <li>
-                          <a href="#" className="block px-4 py-2 hover:bg-gray-100">Ativo</a>
-                        </li>
-                        <li>
-                          <a href="#" className="block px-4 py-2 hover:bg-gray-100">Inativo</a>
-                        </li>
-                      </ul>
-                    </div>
+                    <select onChange={(e) => handleFilter(e)} className="inline-flex items-center text-black-700 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5">
+                      <option value="-1" defaultValue>Todos</option>
+                      <option value="1">Ativo</option>
+                      <option value="0">Inativo</option>
+                    </select>
                   </div>
                   <div className="flex">
-                    <input type="text" id="table-search-users" className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Pesquisar usuários" />
+                    <input type="text" onChange={(e) => handleInput(e)} className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Pesquisar usuários" />
                   </div>
-                  <ButtonOutline action={() => setShowModal(true)}>Cadastrar</ButtonOutline>
+                  <ButtonOutline action={() => onClickRegister()}>Cadastrar</ButtonOutline>
                 </div>
-                <TableUsers items={items} />
+                <TableUsers setShowModal={setShowModal} items={data} setUser={setUser} />
               </div>
 
-              {showModal && <ModalUser setShowModal={setShowModal} />}
+              {showModal && <ModalUser setShowModal={setShowModal} user={user} />}
             </div>
           </div>
         </div>

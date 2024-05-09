@@ -2,53 +2,58 @@ import Swal from 'sweetalert2'
 
 import api from "../../utils/axios";
 
-const TableUsers = ({ items }) => {
+const TableUsers = ({ items, setShowModal, setUser }) => {
 
     const disableUser = (id) => {
         api.post('user/disable/' + id)
-        .then(function (response) {
-            Swal.fire({
-                title: response.data.message,
-                icon: 'success',
-                showConfirmButton: false
-            })
+            .then(function (response) {
+                Swal.fire({
+                    title: response.data.message,
+                    icon: 'success',
+                    showConfirmButton: false
+                })
 
-            setTimeout(() => {
-                window.location.reload()
-            }, 1000);
-        })
-        .catch(function (error) {
-            Swal.fire({
-                title: "Ocorreu um erro, por favor tente novamente!",
-                icon: 'error',
-                showConfirmButton: false
+                setTimeout(() => {
+                    window.location.reload()
+                }, 1000);
             })
-            console.log(error)
-        });
+            .catch(function (error) {
+                Swal.fire({
+                    title: "Ocorreu um erro, por favor tente novamente!",
+                    icon: 'error',
+                    showConfirmButton: false
+                })
+                console.log(error)
+            });
     }
 
 
     const enableUser = (id) => {
         api.post('user/enable/' + id)
-        .then(function (response) {
-            Swal.fire({
-                title: response.data.message,
-                icon: 'success',
-                showConfirmButton: false
-            })
+            .then(function (response) {
+                Swal.fire({
+                    title: response.data.message,
+                    icon: 'success',
+                    showConfirmButton: false
+                })
 
-            setTimeout(() => {
-                window.location.reload()
-            }, 1000);
-        })
-        .catch(function (error) {
-            Swal.fire({
-                title: "Ocorreu um erro, por favor tente novamente!",
-                icon: 'error',
-                showConfirmButton: false
+                setTimeout(() => {
+                    window.location.reload()
+                }, 1000);
             })
-            console.log(error)
-        });
+            .catch(function (error) {
+                Swal.fire({
+                    title: "Ocorreu um erro, por favor tente novamente!",
+                    icon: 'error',
+                    showConfirmButton: false
+                })
+                console.log(error)
+            });
+    }
+
+    const editUser = (user) => {
+        setShowModal(true)
+        setUser(user)
     }
 
     return (
@@ -73,39 +78,41 @@ const TableUsers = ({ items }) => {
                 </tr>
             </thead>
             <tbody>
-                {items.map(({ userID, name, email, type, delete_at }, index) => (
-                    <tr className="bg-white border-b" key={index} id={userID}>
+                {items.map((user, index) => (
+                    <tr className="bg-white border-b" key={index} id={user.userID}>
                         <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
                             <div className="ps-3">
-                                <div className="text-base font-semibold">{name}</div>
+                                <div className="text-base font-semibold">{user.name}</div>
                             </div>
                         </th>
                         <td className="px-6 py-4">
-                            {email}
+                            {user.email}
                         </td>
                         <td className="px-6 py-4">
-                            {type == 1 ? 'Admin' : 'Usuário'}
+                            {user.type == 1 ? 'Admin' : 'Usuário'}
                         </td>
                         <td className="px-6 py-4">
                             <div className="flex items-center">
-                                {delete_at !== null
+                                {user.delete_at !== null
                                     ? <><div className="h-2.5 w-2.5 rounded-full bg-gray-500 mr-2"></div> Inativo </>
                                     : <><div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Ativo </>
                                 }
                             </div>
                         </td>
                         <td className="px-6 py-4">
-                            <a className="font-medium text-blue-600 hover:underline">Editar</a>
                             {
-                                delete_at !== null
-                                ?  <a onClick={() => enableUser(userID)} className="font-medium text-blue-600 hover:underline ml-6 cursor-pointer">Ativar</a>
-                                : <a onClick={() => disableUser(userID)} className="font-medium text-blue-600 hover:underline ml-6 cursor-pointer">Desativar</a>
+                                user.delete_at !== null
+                                    ? <a onClick={() => enableUser(user.userID)} className="font-medium text-blue-600 hover:underline cursor-pointer">Ativar</a>
+                                    : <>
+                                        <a onClick={() => disableUser(user.userID)} className="font-medium text-blue-600 hover:underline mr-6 cursor-pointer">Desativar</a>
+                                        <a onClick={() => editUser(user)} className="font-medium text-blue-600 hover:underline cursor-pointer">Editar</a>
+                                    </>
                             }
                         </td>
                     </tr>
                 ))}
             </tbody>
-            
+
         </table>
     )
 }

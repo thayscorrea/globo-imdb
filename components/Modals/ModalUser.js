@@ -1,6 +1,6 @@
 import FormUser from '../Forms/FormUser';
 
-const ModalUser = ({ setShowModal }) => {
+const ModalUser = ({ setShowModal, user }) => {
 
     return (
         <>
@@ -11,7 +11,7 @@ const ModalUser = ({ setShowModal }) => {
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                         <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                             <h3 className="text-3xl font-semibold">
-                                Cadastrar usuário
+                                { user ? 'Editar' : 'Cadastrar'} usuário
                             </h3>
                             <button
                                 onClick={() => setShowModal(false)}
@@ -23,7 +23,7 @@ const ModalUser = ({ setShowModal }) => {
                         </div>
 
                         <div className="relative p-6 flex-auto">
-                            <FormUser />
+                            <FormUser user={user}/>
                         </div>
                     </div>
                 </div>
