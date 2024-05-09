@@ -25,11 +25,8 @@ const Login = () => {
                                 <a href="#" className="text-sm font-medium text-primary-600 hover:underline">Esqueceu a senha?</a>
                             </div>
                             <div className="flex items-center justify-center">
-                            <ButtonOutline>Login</ButtonOutline>
+                            <ButtonOutline action='/login' children='Login' />
                             </div>
-                            <p className="text-sm font-light text-primary-600">
-                                Não tem conta? <a href="/register" className="font-medium text-primary-600 hover:underline">Cadastre-se</a>
-                            </p>
                         </form>
                     </div>
                 </div>

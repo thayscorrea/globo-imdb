@@ -26,10 +26,6 @@ const Header = () => {
           <ul className="hidden lg:flex col-start-2 col-end-8 text-black-500  items-right">
             <a
               href='/admin/users'
-              activeClass="active"
-              onSetActive={() => {
-                setActiveLink("users");
-              }}
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "users"
@@ -40,11 +36,7 @@ const Header = () => {
               Usuários
             </a>
             <a
-              activeClass="active"
               href='/admin/movies'
-              onSetActive={() => {
-                setActiveLink("movies");
-              }}
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "movies"
@@ -55,11 +47,7 @@ const Header = () => {
               Filmes
             </a>
             <a
-              activeClass="active"
               href='/admin/votes'
-              onSetActive={() => {
-                setActiveLink("votes");
-              }}
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "votes"
@@ -81,11 +69,7 @@ const Header = () => {
         <div className="bg-white-500 sm:px-3">
           <ul className="flex w-full justify-between items-center text-black-500">
             <a
-              activeClass="active"
               href="/admin/users"
-              onSetActive={() => {
-                setActiveLink("users");
-              }}
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                 (activeLink === "users"
@@ -110,11 +94,7 @@ const Header = () => {
               Usuários
             </a>
             <a
-              activeClass="active"
               href="/admin/movies"
-              onSetActive={() => {
-                setActiveLink("movies");
-              }}
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                 (activeLink === "movies"
@@ -139,11 +119,7 @@ const Header = () => {
               Filmes
             </a>
             <a
-              activeClass="active"
               href="/admin/votes"
-              onSetActive={() => {
-                setActiveLink("votes");
-              }}
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                 (activeLink === "votes"
