@@ -21,7 +21,7 @@ const Movie = ({ movie, genres }) => {
                 setIsAdmin(1)
             }
 
-            if (sessionStorage.getItem('isAdmin') == 1) {
+            if (sessionStorage.getItem('token')) {
                 setIsLogged(true)
             }
         }
@@ -70,7 +70,7 @@ const Movie = ({ movie, genres }) => {
                                                     </p>
                                                     <div>
                                                         <div className="flex items-center mb-6 font-bold text-blue-gray-500">
-                                                            <span className="text-2xl">{movie.evaluation}</span>
+                                                            <span className="text-2xl mr-3 mt-1 text-white-300">{movie.evaluation}</span>
                                                             <ReactStars {...star} />
                                                         </div>
                                                     </div>

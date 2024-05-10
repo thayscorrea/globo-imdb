@@ -30,5 +30,6 @@ export const logout = () => {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('userID');
         sessionStorage.removeItem('isAdmin');
+        window.location.href = '/'
     }
 };

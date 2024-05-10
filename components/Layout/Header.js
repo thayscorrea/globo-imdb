@@ -7,7 +7,7 @@ import Logo from "../../public/favicon/icon.svg"
 import api from "../../utils/axios";
 
 const Header = () => {
-  const [isAdmin, setIsAdmin] = useState(0)
+  const [isAdmin, setIsAdmin] = useState(null)
   const [isLogged, setIsLogged] = useState(false)
   const [filter, setFilter] = useState(0)
   const [inputFilter, setInputFilter] = useState("")
@@ -18,7 +18,7 @@ const Header = () => {
         setIsAdmin(1)
       }
 
-      if (sessionStorage.getItem('isAdmin') == 1) {
+      if (sessionStorage.getItem('token')) {
         setIsLogged(true)
       }
     }
