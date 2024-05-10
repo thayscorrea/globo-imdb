@@ -6,7 +6,8 @@ import SeoHead from "../../components/SeoHead";
 import TableMovies from "../../components/Tables/Movies";
 import ModalMovie from "../../components/Modals/ModalMovie";
 
-const Movies = ({ items, genres }) => {
+const Movies = ({ items }) => {
+
   const [originalData, setOriginalData] = useState(items);
   const [data, setData] = useState(items);
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +15,7 @@ const Movies = ({ items, genres }) => {
 
   const onClickRegister = () => {
     setShowModal(true)
-    setUser(null)
+    setMovie(null)
   }
 
   const handleInput = (e) => {
@@ -33,9 +34,9 @@ const Movies = ({ items, genres }) => {
       const newValue = value.toLowerCase();
       const nameMovie = originalData[i].name.toLowerCase();
       const sinopseMovie = originalData[i].sinopse.toLowerCase();
-      const genresMovie = originalData[i].genres.toLowerCase();
+      const yearMovie = originalData[i].year;
 
-      if (nameMovie.includes(newValue) || sinopseMovie.includes(newValue) || genresMovie.includes(newValue)) {
+      if (nameMovie.includes(newValue) || sinopseMovie.includes(newValue) || yearMovie == newValue) {
         filteredData.push(originalData[i]);
       }
     }
@@ -54,12 +55,12 @@ const Movies = ({ items, genres }) => {
                   <div className="flex ">
                     <input type="text" onChange={(e) => handleInput(e)} className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Pesquisar filmes" />
                   </div>
-                  <ButtonOutline action={() => setShowModal(true)} children='Cadastrar' />
+                  <ButtonOutline action={() => onClickRegister()}>Cadastrar</ButtonOutline>
                 </div>
-                <TableMovies setShowModal={setShowModal} items={items} setMovie={setMovie} />
+                <TableMovies setShowModal={setShowModal} items={data} setMovie={setMovie} />
               </div>
 
-              {showModal && <ModalMovie setShowModal={setShowModal} />}
+              {showModal && <ModalMovie setShowModal={setShowModal} movie={movie} />}
 
             </div>
           </div>
@@ -71,12 +72,10 @@ const Movies = ({ items, genres }) => {
 
 export async function getServerSideProps() {
   const items = await fetch(`http://localhost:8000/movies`).then(res => res.json());
-  const genres = await fetch(`http://localhost:8000/genres`).then(res => res.json());
 
   return {
     props: {
-      items: items,
-      genres: genres,
+      items: items
     },
   }
 }

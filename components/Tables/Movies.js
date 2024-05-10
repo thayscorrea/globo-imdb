@@ -3,7 +3,6 @@ import Swal from 'sweetalert2'
 import api from "../../utils/axios";
 
 const TableMovies = ({ items, setShowModal, setMovie }) => {
-
     const editMovie = (movie) => {
         setShowModal(true)
         setMovie(movie)
@@ -77,8 +76,8 @@ const TableMovies = ({ items, setShowModal, setMovie }) => {
                             {movie.evaluation}
                         </td>
                         <td className="px-6 py-4">
-                            <a onClick={() => editMovie(user)} className="font-medium text-blue-600 hover:underline">Editar</a>
-                            <a onClick={() => deleteMovie(user)} className="font-medium text-blue-600 hover:underline ml-6">Excluir</a>
+                            <a onClick={() => editMovie(movie)} className="font-medium text-blue-600 hover:underline cursor-pointer">Editar</a>
+                            <a onClick={() => deleteMovie(movie)} className="font-medium text-blue-600 hover:underline ml-6 cursor-pointer">Excluir</a>
                         </td>
                     </tr>
                 ))}
