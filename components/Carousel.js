@@ -18,13 +18,13 @@ const Carousel = ({ items }) => {
     dotsClass: "slick-dots w-max absolute mt-20  ",
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 2,
     responsive: [
       {
         breakpoint: 770,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -49,35 +49,37 @@ const Carousel = ({ items }) => {
         className="flex items-stretch justify-items-stretch"
       >
         {items.map(({ movieID, name, year, time, sinopse, image, evaluation }, index) => (
-          <div className="px-3 flex items-stretch cursor-pointer" id={`movie-`+movieID} key={index}>
-            <div className="border-2 border-white-500 hover:border-yellow-500 transition-all rounded-lg p-8 flex flex-col">
-              <div className="flex flex-col xl:flex-row w-full items-stretch xl:items-center">
-                <div className="flex order-2 xl:order-1">
-                  <img
-                    src={image}
-                    height={50}
-                    width={50}
-                    alt="Icon People"
-                  />
-                  <div className="flex flex-col ml-5 text-left">
-                    <p className="text-lg text-white-500 capitalize">
-                      {name}
-                    </p>
-                    <p className="text-sm text-white-500 capitalize">
-                      {year} - {time}
-                    </p>
+          <a className="cursor-pointer" href={"/movie/" + movieID} key={index}>
+            <div className="px-3 flex items-stretch" id={`movie-` + movieID}>
+              <div className="border-2 border-white-500 hover:border-yellow-500 transition-all rounded-lg p-8 flex flex-col">
+                <div className="h-16 flex flex-col xl:flex-row w-full items-stretch xl:items-center">
+                  <div className="flex order-2 xl:order-1">
+                    <img
+                      src={'http://localhost:8000/public/uploads/' + image}
+                      height={50}
+                      width={50}
+                      alt="Icon People"
+                    />
+                    <div className="flex flex-col ml-5 text-left">
+                      <p className="text-lg text-white-500 capitalize">
+                        {name}
+                      </p>
+                      <p className="text-sm text-white-500 capitalize">
+                        {year} - {time}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-none items-center ml-auto order-1 xl:order-2">
+                    <p className="text-sm text-white-500">{evaluation}</p>
+                    <span className="flex ml-4">
+                      <Stars className="h-4 w-4" />
+                    </span>
                   </div>
                 </div>
-                <div className="flex flex-none items-center ml-auto order-1 xl:order-2">
-                  <p className="text-sm text-white-500">{evaluation}</p>
-                  <span className="flex ml-4">
-                    <Stars className="h-4 w-4" />
-                  </span>
-                </div>
+                <p className="mt-5 text-left text-white-500">{sinopse}</p>
               </div>
-              <p className="mt-5 text-left text-white-500">{sinopse}</p>
             </div>
-          </div>
+          </a>
         ))}
       </Slider>
       <div className="flex w-full items-center justify-end">

@@ -7,16 +7,12 @@ import Logo from '../public/favicon/icon.svg'
 const defaultMeta = {
   title: 'IMDb - Globo',
   siteName: 'IMDbGlobo',
-  description:
-    '',
-  // change base url of your web (without '/' at the end)
-  url: '',
+  description: '',
+  url: '/',
   type: 'website',
   robots: 'follow, index',
-  // change with url of your image (recommended dimension = 1.91:1)
-  // used in twitter, facebook, etc. card when link copied in tweet/status 
   image: Logo,
-  author: 'Lorem Ipsum'
+  author: 'Thays L Correa'
 };
 
 /**
@@ -83,13 +79,7 @@ const SeoHead = (props) => {
           />
         </>
       )}
-      
-      {/* Windows 8 app icon */}
-      <meta name='msapplication-TileColor' content='#F53838' />
-      <meta
-        name='msapplication-TileImage'
-        content=''
-      />
+
       {/* Accent color on supported browser */}
       <meta name='theme-color' content='#F53838' />
     </Head>

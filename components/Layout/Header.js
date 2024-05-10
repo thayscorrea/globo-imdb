@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import ButtonOutline from "../misc/ButtonOutline.";
 import Logo from "../../public/favicon/icon.svg"
 
 const Header = () => {
-  
+
   return (
     <>
       <header className="fixed top-0 w-full  z-30 bg-white-500 transition-all shadow-md pt-0">
@@ -15,8 +15,8 @@ const Header = () => {
           <ul className="hidden lg:flex col-start-2 col-end-8 text-black-500 gap-x-6 items-center">
 
             <div className="w-1/3">
-              <select id="underline_select" className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                <option selected>Filtrar por</option>
+              <select defaultValue={0} id="underline_select" className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option value="0">Filtrar por</option>
                 <option value="Diretor">Diretor</option>
                 <option value="Filme">Filme</option>
                 <option value="Gênero">Gênero</option>
@@ -37,7 +37,13 @@ const Header = () => {
             </div>
           </ul>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
-            <ButtonOutline action='/login' children='Login' />
+            <ButtonOutline action={() => window.location.href = '/login'} children='Login' />
+            
+            {typeof window !== "undefined" && sessionStorage.getItem('token') !== null &&
+              <div className="ml-6 font-medium flex justify-end items-center cursor-pointer text-black-500">
+                <a href="/logout">Sair</a>
+              </div>
+            }
           </div>
         </nav>
       </header>

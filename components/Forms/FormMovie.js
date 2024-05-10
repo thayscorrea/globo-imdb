@@ -89,25 +89,25 @@ const FormMovie = ({ movie }) => {
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <form className="space-y-4 md:space-y-6" action="#">
                 <div>
-                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
+                    <label htmlhtmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
                     <img id="file"></img>
                     <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="" />
                 </div>
                 <div>
-                    <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ano de Lançamento</label>
+                    <label htmlhtmlFor="type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ano de Lançamento</label>
                     <input type="number" name="year" id="year" value={year} onChange={(e) => setYear(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="2024" required="" />
                 </div>
                 <div>
-                    <label htmlFor="sinopse" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sinopse</label>
+                    <label htmlhtmlFor="sinopse" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sinopse</label>
                     <input type="text" name="sinopse" id="sinopse" value={sinopse} onChange={(e) => setSinopse(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="" />
                 </div>
 
                 <div>
-                    <label htmlFor="time" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempo</label>
+                    <label htmlhtmlFor="time" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempo</label>
                     <input type="time" name="time" id="time" value={time} onChange={(e) => setTime(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="" />
                 </div>
                 <div>
-                    <label htmlFor="file" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Capa do filme</label>
+                    <label htmlhtmlFor="file" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Capa do filme</label>
                     <input type="file" name="file" accept="image/*" ref={filesElement} placeholder="Anexe a capa do filme" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="" />
                 </div>
                 <div className="flex items-center justify-center">

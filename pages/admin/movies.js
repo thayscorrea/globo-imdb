@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { routePrivate } from "../../services/routePrivate";
 import Layout from "../../components/LayoutAdmin/Layout";
 import ButtonOutline from "../../components/misc/ButtonOutline.";
 import SeoHead from "../../components/SeoHead";
@@ -7,6 +8,8 @@ import TableMovies from "../../components/Tables/Movies";
 import ModalMovie from "../../components/Modals/ModalMovie";
 
 const Movies = ({ items }) => {
+
+  routePrivate()
 
   const [originalData, setOriginalData] = useState(items);
   const [data, setData] = useState(items);

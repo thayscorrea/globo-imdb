@@ -1,7 +1,12 @@
+import { routePrivate } from "../../services/routePrivate";
+
 import Layout from "../../components/LayoutAdmin/Layout";
 import SeoHead from "../../components/SeoHead";
 
 const Votes = ({ items }) => {
+
+  routePrivate()
+
   return (
     <>
       <SeoHead title='Votes' />

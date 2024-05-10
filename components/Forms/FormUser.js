@@ -101,7 +101,7 @@ const FormUser = ({ user }) => {
                 </div>
                 <div>
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nível</label>
-                    <select onChange={(e) => setType(e.target.value)} value={type} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                    <select onChange={(e) => setType(e.target.value)} defaultValue={type} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
                         <option value="1">Admin</option>
                         <option value="0">Usuário</option>
                     </select>

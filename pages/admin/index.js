@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Layout from "../../components/LayoutAdmin/Layout";
 import ButtonOutline from "../../components/misc/ButtonOutline.";
 import ModalUser from "../../components/Modals/ModalUser";
 import SeoHead from "../../components/SeoHead";
 import TableUsers from "../../components/Tables/Users";
+import { routePrivate } from "../../services/routePrivate";
 
 const Users = ({ items }) => {
+
+  routePrivate()
+
   const [originalData, setOriginalData] = useState(items);
   const [data, setData] = useState(items);
   const [showModal, setShowModal] = useState(false);
@@ -56,8 +60,8 @@ const Users = ({ items }) => {
 
     for (let i = 0; i < originalData.length; ++i) {
       const status = originalData[i].delete_at == null ? 1 : 0;
-      
-      if (status == inputValue){
+
+      if (status == inputValue) {
         filteredData.push(originalData[i]);
       }
     }
@@ -75,8 +79,8 @@ const Users = ({ items }) => {
               <div className="relative overflow-x-auto">
                 <div className="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white">
                   <div>
-                    <select onChange={(e) => handleFilter(e)} className="inline-flex items-center text-black-700 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5">
-                      <option value="-1" defaultValue>Todos</option>
+                    <select defaultValue="-1" onChange={(e) => handleFilter(e)} className="inline-flex items-center text-black-700 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5">
+                      <option value="-1">Todos</option>
                       <option value="1">Ativo</option>
                       <option value="0">Inativo</option>
                     </select>
