@@ -9,11 +9,13 @@ const ModalEvaluation = ({ evaluation, setEvaluation, setShowModal, movieID }) =
 
     const [userID, setUserID] = useState(0)
 
-    if (typeof window !== "undefined") {
-        if (sessionStorage.getItem('userID')) {
-            setUserID(sessionStorage.getItem('userID'))
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            if (sessionStorage.getItem('userID')) {
+                setUserID(sessionStorage.getItem('userID'))
+            }
         }
-    }
+    }, []);
 
     const star = {
         size: 30,
@@ -24,7 +26,7 @@ const ModalEvaluation = ({ evaluation, setEvaluation, setShowModal, movieID }) =
             setEvaluation(newValue);
         }
     };
-    
+
     const handleClick = () => {
         if (userID == 0) {
             Swal.fire({

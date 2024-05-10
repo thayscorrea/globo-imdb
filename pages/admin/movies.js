@@ -7,7 +7,7 @@ import SeoHead from "../../components/SeoHead";
 import TableMovies from "../../components/Tables/Movies";
 import ModalMovie from "../../components/Modals/ModalMovie";
 
-const Movies = ({ items }) => {
+const Movies = ({ items, genres }) => {
 
   routePrivate()
 
@@ -63,7 +63,7 @@ const Movies = ({ items }) => {
                 <TableMovies setShowModal={setShowModal} items={data} setMovie={setMovie} />
               </div>
 
-              {showModal && <ModalMovie setShowModal={setShowModal} movie={movie} />}
+              {showModal && <ModalMovie setShowModal={setShowModal} movie={movie} genres={genres} />}
 
             </div>
           </div>
@@ -75,10 +75,12 @@ const Movies = ({ items }) => {
 
 export async function getServerSideProps() {
   const items = await fetch(`http://localhost:8000/movies`).then(res => res.json());
+  const genres = await fetch(`http://localhost:8000/genres`).then(res => res.json());
 
   return {
     props: {
-      items: items
+      items: items,
+      genres: genres
     },
   }
 }

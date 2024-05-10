@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import ReactStars from "react-rating-stars-component";
 
-import Stars from "../public/assets/Icon/stars.svg";
 import ArrowBack from "../public/assets/Icon/eva_arrow-back-fill.svg";
 import ArrowNext from "../public/assets/Icon/eva_arrow-next-fill.svg";
 
@@ -40,6 +40,12 @@ const Carousel = ({ items }) => {
   };
   const [sliderRef, setSliderRef] = useState(null);
 
+  const star = {
+    size: 20,
+    edit: false,
+    count: 4
+  };
+
   return (
     <>
       <Slider
@@ -72,7 +78,7 @@ const Carousel = ({ items }) => {
                   <div className="flex flex-none items-center ml-auto order-1 xl:order-2">
                     <p className="text-sm text-white-500">{evaluation}</p>
                     <span className="flex ml-4">
-                      <Stars className="h-4 w-4" />
+                      <ReactStars {...star} value={evaluation} />
                     </span>
                   </div>
                 </div>

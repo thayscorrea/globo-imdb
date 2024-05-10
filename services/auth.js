@@ -21,6 +21,7 @@ export const login = (token, userID, isAdmin) => {
         sessionStorage.setItem('token', token)
         sessionStorage.setItem('userID', userID)
         sessionStorage.setItem('isAdmin', isAdmin)
+        window.location.href = '/'
     }
 };
 

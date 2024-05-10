@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import { logout } from "../../services/auth"; 
 import Logo from "../../public/favicon/icon.svg"
 
 const Header = () => {
@@ -21,7 +22,7 @@ const Header = () => {
       >
         <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
           <div className="col-start-1 col-end-2 flex items-center">
-            <Logo className="h-8 w-auto" />
+            <a href="/"><Logo className="h-8 w-auto" /></a>
           </div>
           <ul className="hidden lg:flex col-start-2 col-end-8 text-black-500  items-right">
             <a
@@ -59,7 +60,7 @@ const Header = () => {
             </a>
           </ul>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center cursor-pointer">
-            <a href="/logout">Sair</a>
+            <a onClick={() => logout()}>Sair</a>
           </div>
         </nav>
       </header>

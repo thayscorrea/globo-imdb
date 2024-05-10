@@ -11,7 +11,7 @@ const Login = () => {
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
 
-    const handleClick = async () => {
+    const handleClick = () => {
         if(!email || !password){
              Swal.fire({
                 title: "Login e senha precisam ser preenchidos!",
@@ -20,17 +20,13 @@ const Login = () => {
             })
         }
 
-        await api.post('login', {
+        api.post('login', {
             email,
             password
         })
         .then(function (response) {
             const data = response.data
             login(data.token, data.userID, data.isAdmin)
-
-            setTimeout(() => {
-                window.location.href = '/'
-            }, 500);
         })
         .catch(function (error) {
             Swal.fire({

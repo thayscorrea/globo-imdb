@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 
 import Layout from "../../components/Layout/Layout";
@@ -12,6 +12,20 @@ const Movie = ({ movie, genres }) => {
 
     const [evaluation, setEvaluation] = useState(0)
     const [showModal, setShowModal] = useState(false)
+    const [isLogged, setIsLogged] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(0)
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            if (sessionStorage.getItem('isAdmin') == 1) {
+                setIsAdmin(1)
+            }
+
+            if (sessionStorage.getItem('isAdmin') == 1) {
+                setIsLogged(true)
+            }
+        }
+    }, []);
 
     let genresString = ''
     genres.map(({ name }, index) => {
@@ -50,13 +64,13 @@ const Movie = ({ movie, genres }) => {
                                                 alt={movie.name}
                                             />
                                             <div className="flex flex-col ml-12 text-left">
-                                                <div className="flex justify-between">
+                                                <div className="grid justify-between">
                                                     <p className="text-5xl text-white-500 capitaliz pb-6">
                                                         {movie.name}
                                                     </p>
                                                     <div>
-                                                        <div className="flex items-center gap-2 font-bold text-blue-gray-500">
-                                                            <span className="text-2xl mr-2 mt-1">{movie.evaluation}</span>
+                                                        <div className="flex items-center mb-6 font-bold text-blue-gray-500">
+                                                            <span className="text-2xl">{movie.evaluation}</span>
                                                             <ReactStars {...star} />
                                                         </div>
                                                     </div>
@@ -81,7 +95,9 @@ const Movie = ({ movie, genres }) => {
                                 </div>
                             </div>
                             <div className="flex justify-center">
-                                <ButtonOutline action={() => openModal()}> Avaliar </ButtonOutline>
+                                {isLogged && !isAdmin &&
+                                    <ButtonOutline action={() => openModal()}>Avaliar</ButtonOutline>
+                                }
                             </div>
                         </div>
                         {showModal && <ModalEvaluation evaluation={evaluation} setEvaluation={setEvaluation} setShowModal={setShowModal} movieID={movie.movieID} />}
