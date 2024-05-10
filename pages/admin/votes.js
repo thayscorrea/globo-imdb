@@ -2,6 +2,7 @@ import { routePrivate } from "../../services/routePrivate";
 
 import Layout from "../../components/LayoutAdmin/Layout";
 import SeoHead from "../../components/SeoHead";
+import TableEvaluations from "../../components/Tables/Evaluations";
 
 const Votes = ({ items }) => {
 
@@ -11,14 +12,14 @@ const Votes = ({ items }) => {
     <>
       <SeoHead title='Votes' />
       <Layout>
-       
+        <TableEvaluations items={items} />
       </Layout>
     </>
   );
 }
 
 export async function getServerSideProps() {
-  const items = await fetch(`http://localhost:8000/users`).then(res => res.json());
+  const items = await fetch(`http://localhost:8000/evaluations/movies`).then(res => res.json());
 
   return {
     props: {
